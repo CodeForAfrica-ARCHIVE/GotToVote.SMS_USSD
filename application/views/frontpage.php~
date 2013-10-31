@@ -1,0 +1,147 @@
+
+
+				<div class="slider">
+					<div class="sleeve" aria-live="assertive" aria-relevant="additions">
+						<div class="slideContent"><div class="slide"></div></div>
+						<div class="slideContent">
+							<div class="slide">
+								<!-- DATA -->
+<script type="x/pagedata">
+      [{	
+    "uid": "pdb3015",
+    "preview": {
+      "title": "The Presidential Daily Brief",
+      "subTitle":  ""
+    },
+    "url": "http://www.ozy.com/presidential-daily-brief/pdb-3015",
+    "section": {
+    "colour": "colour1",
+    "name": "Presidential Daily Brief",
+    "url": "http://www.ozy.com/presidential-daily-brief/pdb-3015"
+    },
+    "meta": {
+    "title": "The Presidential Daily Brief | Ozymandias",
+    "description": "",
+    "canonical": "http://www.ozy.com/presidential-daily-brief/pdb-3015",
+    "keywords": "The Presidential Daily Brief "
+    },
+  
+ 
+    "next": {
+    "uid": "pdb7",
+    "preview": {
+    "title": "Rising stars",
+     "subTitle":  ""
+    },
+    "url": "http://www.ozy.com/pagefragment/7.spotlightlite",
+    "section": {
+    "colour": "colour2",
+    "name": "Rising stars",
+     "url": "http://www.ozy.com/rising-stars/"
+   }
+    }
+  ,
+ 
+    "previous": {
+    "uid": "pdb11",
+    "preview": {
+    "title": "Performance",
+     "subTitle":  ""
+    },
+    "url": "http://www.ozy.com/pagefragment/11.spotlightlite",
+    "section": {
+    "colour": "colour8",
+    "name": "Performance",
+     "url": "http://www.ozy.com/performance/"
+   }
+    }
+  
+      }]
+    </script>
+<div class="pdbpage"><div class="contentWrapper"><div class="pdbTopBlock">
+<header>
+	<link rel="stylesheet" href="<?php echo base_url();?>assets/leaflet/leaflet.css" />
+	<div class="row">
+	<div class="span5">
+	<div id="map" style="width: 100%; height: 250px"></div>
+	<script src="<?php echo base_url();?>assets/leaflet/leaflet.js"></script>
+	<script>
+		var map = L.map('map').setView([51.505, -0.09], 13);
+		L.tileLayer('http://{s}.tile.cloudmade.com/BC9A493B41014CAABB98F0471D759707/997/256/{z}/{x}/{y}.png', {
+			maxZoom: 18,
+			attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://cloudmade.com">CloudMade</a>'
+		}).addTo(map);
+
+
+		L.marker([51.5, -0.09]).addTo(map)
+			.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+
+		L.circle([51.508, -0.11], 500, {
+			color: 'red',
+			fillColor: '#f03',
+			fillOpacity: 0.5
+		}).addTo(map).bindPopup("I am a circle.");
+
+		L.polygon([
+			[51.509, -0.08],
+			[51.503, -0.06],
+			[51.51, -0.047]
+		]).addTo(map).bindPopup("I am a polygon.");
+		var popup = L.popup();
+		function onMapClick(e) {
+			popup
+				.setLatLng(e.latlng)
+				.setContent("You clicked the map at " + e.latlng.toString())
+				.openOn(map);
+		}
+
+		map.on('click', onMapClick);
+
+	</script>
+	</div>
+	<div class="span4"><h4>Filter</h4>
+		<form>
+		<select name="country"><option>Choose Country</option><option value='Kenya'>Kenya</option><option value='Uganda'>Uganda</option><option value='Tanzania'>Tanzania</option></select>
+		<br />
+		<input name="location" type="text" placeholder="Location">
+		<br />
+		<select name="type"><option>Type of violation</option><option value="Rape">Rape</option><option value="Assault">Assault</option><option value="Arrest">Arrest</option></select>
+		<br />
+		<input type="date" name="start" placeholder="Start Date">
+		<br />
+		<input type="date" name="end" placeholder="End Date">
+		<br />
+		<select name="gender">
+				<option>Orientation</option>
+				<option value="gay">Gay</option>
+				<option value="lesbian">Lesbian</option>
+				<option value="other">Other</option>
+			</select><br />
+		</form>
+	</div>
+	</div>
+</header>
+
+</div>
+
+<div class="topCommentsBreaker" style="margin-top:20px"></div>
+<div id="commentsAnchor" class="commentsAreaWrapper">
+	<a href="#" class="loadComments" data-url="http://www.ozy.com/pdb-3015">
+		<span class="rtbCommentCount" data-counterEmptyText="Be the first to comment" data-counterText="View All Comments" data-counter="http://www.ozy.com/pdb-3015">
+			Reports</span></a>
+			<div class="commentsArea"></div>
+			</div><div class="pdbAdditional">
+<div class="updates">
+	<script type="text/javascript" charset="utf-8">
+			$(document).ready(function() {
+				$('#example').dataTable();
+			} );
+		</script>
+		
+<div id="demo">
+
+</div>
+</div>
+</div></div>
+
+

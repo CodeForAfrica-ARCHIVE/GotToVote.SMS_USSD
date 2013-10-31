@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><?php echo $title.' | Classified1';?></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+ <link href="<?php echo base_url();?>assets_bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets_bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets_bootstrap/js/google-code-prettify/prettify.css" rel="stylesheet">
+   	<style type="text/css" title="currentStyle">
+			@import "<?php echo base_url()?>assets/datatables/css/demo_page.css";
+			@import "<?php echo base_url()?>assets/datatables/css/demo_table.css";
+
+		</style>
+		<script type="text/javascript" language="javascript" src="<?php echo base_url()?>assets/datatables/js/jquery.js"></script>
+		<script type="text/javascript" language="javascript" src="<?php echo base_url()?>assets/datatables/js/jquery.dataTables.js"></script>
+
+<link href='<?php echo base_url()?>assets/css/4BCAB50F08EA7333567ABCD935220896.css' type='text/css' rel='stylesheet' media='screen' />
+
+<!--[if (gt IE 8) | (IEMobile)]><!-->
+	<link href="<?php echo base_url()?>assets/css/responsive.css" rel="stylesheet" media="screen">
+<!--<![endif]-->
+
+<!--[if (lt IE 9) & (!IEMobile)]>
+	<link href="/magazine/css/nonResponsive.css" rel="stylesheet" media="screen">
+<![endif]-->
+
+<!--[if IE 9]>
+	<link href="/magazine/css/ie/ie9.css" rel="stylesheet" media="screen">
+<![endif]-->
+
+<!--[if IE 8]>
+	<link href="/magazine/css/ie/ie8.css" rel="stylesheet" media="screen">
+<![endif]-->
+
+<!--[if (lt IE 8)]>
+	<link href="/magazine/css/ie/ie7.css" rel="stylesheet" media="screen">
+<![endif]-->
+
+<link href="http://www.ozy.com/magazine/css/print.css" rel="stylesheet" media="print">
+
+
+	
+
+<!--[if lt IE 9]>
+	<script async src="/javascript/libraries/html5shiv.js"></script>
+<![endif]-->
+
+
+
+
+<ul class="skiplinks"><li><a href="#content" accesskey="s">Skip to main content</a></li><li><a href="#mainNavigation">Skip to navigation</a></li></ul>
+
+	<a name="top" id="top"></a>
+	<div id="wrapper">
+		<div>
+
+
+			<header class="mast scrollable vertical" role="banner">
+				<a href="#" class="icon menu open">Menu</a>
+				<div class="sleeve">
+					<div class="scrollContent">
+						
+
+
+<a href="/" class="logo">Usalama</a>
+ <p class="strapline">Security for the LGBTI Community</p>
+						
+
+
+<nav id="mainNavigation" class="main" role="navigation">
+  <section class="dailyDose">
+    <a href="#" class="current">Report</a>
+    <div class="content">
+	<div style="text-align:center">
+	<h3 style="color:#ffffff;"><img src="<?php echo base_url();?>assets/img/sms.png" width="25px" style="margin-top:-30px;">SMS to 45455</h3>
+	<h5>- OR -</h5> 
+	</div>
+<form action="<?php echo base_url();?>index.php/reports/submit" method="POST">
+<input name="name" type="text" placeholder="Name"><br />
+<input name="email" type="text" placeholder="Email"><br />
+<input name="phone" type="text" placeholder="Phone"><br />
+<textarea name="report" placeholder="Report"></textarea><br />
+			<select name="type">
+				<option value="Assault">Assault</option>
+				<option value="Rape">Rape</option>
+				<option value="Blackmail">Blackmail</option>
+			</select>
+		<br />
+			<select name="gender">
+				<option>Orientation</option>
+				<option value="gay">Gay</option>
+				<option value="lesbian">Lesbian</option>
+				<option value="other">Other</option>
+			</select><br />
+		<input name="location" type="text" placeholder="Location"><br />
+		<input type="submit" value="Submit" class="btn btn-primary">
+</form>
+
+    </div>
+  </section>
+  <section class="moreOzy">
+    <a href="#">
+      <span>LBTQI</span>News</a>
+    <div class="content">
+
+</div>
+  </section>
+  <section class="aboutOzy">
+    <a href="#">
+      <span>Ozy</span>About</a>
+	
+    <div class="content">
+			<strong>About</strong>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas, augue vitae faucibus iaculis, turpis est 
+			<strong>Report Incidences</strong>
+			<img src="<?php echo base_url();?>/assets/img/report.svg" width="40px" style="float:left;margin-right:10px">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas, augue vitae faucibus iaculis, turpis est 
+			<br><br>
+			<strong>Donor Information</strong>
+			<img src="<?php echo base_url();?>/assets/img/donors.svg" width="40px" style="float:left;margin-right:10px">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas, augue vitae faucibus iaculis, turpis est
+			<strong>Support Organisations</strong>
+			<img src="<?php echo base_url();?>/assets/img/support.svg" width="40px" style="float:left;margin-right:10px">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas, augue vitae faucibus iaculis, turpis est
+	</div>
+  </section>
+
+</nav>
+					</div>
+				</div>
+				<div class="scrollbar"></div>
+			</header>
+
+			<div class="mainColumn" id="content" role="main">
+
+                
+
+
+<div class="section colour1">
+  <a href="#top" class="icon menu">Menu</a>
+  <a href="#top" class="icon search">Search</a>
+  <a href="/" class="logo">Usalama</a>
+  <div class="searchForm">
+    <form action="/search">
+      <label for="headerSearch">Search</label>
+      <input type="search" class="headerSearch" id="headerSearch" name="searchozy" />
+      <input type="submit" class="submit" value="Search" />
+    </form>
+  </div>
+  <a href="/" class="home">Home</a>
+  <a href="<?php echo base_url();?>" class="title">Reports</a>
+  <div class="sliderControls">
+    <div class="previous colour8 noSubTitle">
+      <a href="reports/">
+        <span class="icon previous">previous</span>
+      </a>
+      <div class="preview">
+        <div>
+          <p class="title">Performance</p>
+          <p class="subTitle"></p>
+        </div>
+      </div>
+    </div>
+    <div class="next colour2 noSubTitle">
+      <a href="http://google.com">
+        <span class="icon next">next</span>
+      </a>
+      <div class="preview">
+        <div>
+          <p class="title">Rising stars</p>
+          <p class="subTitle"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="skipAd">
+    <a href="#" class="skip">Skip Advert</a>
+  </div>
+</div>
+

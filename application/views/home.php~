@@ -1,0 +1,124 @@
+<style>
+ .sample{
+ 	min-height:490px;
+      	position: relative;
+margin: 15px 0;
+padding: 39px 19px 14px;
+background-color: #fff;
+border: 1px solid #ddd;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+      }
+      .sample:after{
+      	content: "Submit Report";
+position: absolute;
+top: -1px;
+left: -1px;
+padding: 3px 7px;
+font-size: 12px;
+font-weight: bold;
+background-color: #f5f5f5;
+border: 1px solid #ddd;
+color: #9da0a4;
+-webkit-border-radius: 4px 0 4px 0;
+-moz-border-radius: 4px 0 4px 0;
+border-radius: 4px 0 4px 0;
+      }
+      
+       .sample2{
+       	min-height:490px;
+      	position: relative;
+margin: 15px 0;
+padding: 39px 19px 14px;
+background-color: #fff;
+border: 1px solid #ddd;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+      }
+      .sample2:after{
+      	content: "About App";
+position: absolute;
+top: -1px;
+left: -1px;
+padding: 3px 7px;
+font-size: 12px;
+font-weight: bold;
+background-color: #f5f5f5;
+border: 1px solid #ddd;
+color: #9da0a4;
+-webkit-border-radius: 4px 0 4px 0;
+-moz-border-radius: 4px 0 4px 0;
+border-radius: 4px 0 4px 0;
+      }
+    </style>
+  <div class="row-fluid">
+    <div class="sample span6" style="min-height:490px;">
+<?php
+	if(isset($message)){
+		print "<h3>".$message."</h3>";
+	}
+?>
+<form action="<?php echo base_url();?>index.php/reports/submit" method="POST">
+<table class="table table-striped">
+	<tr>
+		<td>Name</td><td><input name="name" type="text" placeholder="Name"></td>
+	</tr>
+	<tr>
+		<td>Email</td><td><input name="email" type="text" placeholder="Email"></td>
+	</tr>
+	<tr>
+		<td>Phone</td><td><input name="phone" type="text" placeholder="Phone"></td>
+	</tr>
+	<tr>
+		<td>Report</td><td><textarea name="report" placeholder="Report"></textarea></td>
+	</tr>
+	<tr>
+		<td>Type</td><td>
+			<select name="type">
+				<option value="Assault">Assault</option>
+				<option value="Rape">Rape</option>
+				<option value="Blackmail">Blackmail</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>SOGI</td><td>
+			<select name="gender">
+				<option value="gay">Gay</option>
+				<option value="lesbian">Lesbian</option>
+				<option value="other">Other</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>Location</td><td><input name="location" type="text" placeholder="Location"></td>
+	</tr>
+	<tr>
+		<td></td><td><input type="submit" value="Submit" class="btn btn-primary"></td>
+	</tr>
+</table>
+</form>
+</div>
+<div class="sample2 span6" style="min-height:490px;">
+ <div class="jumbotron" style="width:80%">
+        <h1>App Title</h1>
+        <p class="lead">
+        	A brief description of the app goes here 
+        </p>
+         </div>
+	<h3>About</h3>
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas, augue vitae faucibus iaculis, turpis est 
+	<h3>Report Incidences</h3>
+	<img src="<?php echo base_url()?>assets/img/report.svg" width="40px" style="float:left;margin-right:10px">
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas, augue vitae faucibus iaculis, turpis est 
+	<br /><br />
+	<h3>Donor Information</h3>
+	<img src="<?php echo base_url()?>assets/img/donors.svg" width="40px" style="float:left;margin-right:10px">
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas, augue vitae faucibus iaculis, turpis est
+	<h3>Support Organisations</h3>
+	<img src="<?php echo base_url()?>assets/img/support.svg" width="40px" style="float:left;margin-right:10px">
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque egestas, augue vitae faucibus iaculis, turpis est
+</div>
+</div>

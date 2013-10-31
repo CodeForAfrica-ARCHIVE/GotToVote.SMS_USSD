@@ -1,0 +1,140 @@
+		
+
+
+							</div>
+						</div>
+						<div class="slideContent"><div class="slide"></div></div>
+					</div>
+				</div>
+
+			</div>
+
+			
+<footer class="footer" role="contentinfo">
+  <div class="additional">
+    <div class="search"><form action="http://www.ozy.com/search"><label for="footerSearch">Search</label><input type="search" class="footerSearch" id="footerSearch" name="searchozy" /><input type="submit" class="submit" value="Search" /></form></div>
+  </div>
+  <div class="header">
+    <h6>
+      <a href="<?php echo base_url();?>">Usalama</a>
+    </h6>
+    <div class="social">
+      <a href="http://www.facebook.com/" class="icon facebook">Facebook</a>
+      <a href="https://twitter.com/" class="icon twitter">Twitter</a>
+      <a href="http://www.linkedin.com/pub/" class="icon linkedin">Linked In</a>
+    </div>
+  </div>
+</footer>	
+
+
+	
+		</div>
+	</div>
+
+	
+
+	
+
+<div class="overlay generic">
+	<div class="content"></div>
+	<div class="shim"></div>
+</div>
+
+<div class="overlayStyle2">
+	<div class="content"></div>
+	<div class="shim"></div>
+</div>
+
+<div class="overlay commentsOverlay">
+	<div class="content"></div>
+	<div class="shim"></div>
+</div>
+
+<div id="galleryOverlay" class="overlay gallery">
+	<div class="content">
+		<div class="overlaySectionWrapper">
+			<div class="section colour12">
+				<span class="title"></span>
+				<a href="/" class="logo">Usalama</a>
+				<div class="popupControls">
+					<a class="close" href="#">
+						<span class="icon style2 close">close</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class="contentWrapper">
+			<div class="overlayContentWrapper">
+				<div class="galleryMeta">
+					<div class="sliderControls">
+						<div class="previous">
+							<a href="#">
+								<span class="icon previousIcon">previous</span>
+							</a>
+						</div>
+						<div class="next">
+							<a href="#">
+								<span class="icon nextIcon">next</span>
+							</a>
+						</div>
+					</div>
+					<div class="itemNumber">
+						<span></span>
+					</div>
+					<div class="media">
+					</div>
+					<h2></h2>
+					<p class="source">Source: <cite><a href=""></a></cite></p>
+					<p class="description"></p>
+					<p class="sponsor">In partnership with <img src="" alt=""></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="shim"></div>
+</div>
+
+<!-- Modal & Overlay -->
+<div class="simple-modal-overlay-wrapper">
+	<div class="simple-modal-overlay"></div>
+	<div id="terms" class="simple-modal-wrapper">
+		<div class="simple-modal">
+			<div class="modal-header">
+				<h1>Terms &amp; Conditions</h1>
+				<a href="#" rel="nofollow" class="closeButton"><i class="icon close"></i></a>
+			</div>
+			<div class="modal-content">
+				
+			</div>
+		</div>
+	</div>
+</div>
+
+
+	
+<script src='http://www.ozy.com/Cache/Packager/81E36C990D520E85B027391A7EACB97D.js' type='text/javascript'></script>
+	
+ <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+  <!--  <script src="<?php echo base_url();?>assets_bootstrap/js/jquery.js"></script>
+    -->
+    <script src="<?php echo base_url();?>assets_bootstrap/js/bootstrap-transition.js"></script>
+    <script src="<?php echo base_url();?>assets_bootstrap/js/bootstrap-alert.js"></script>
+    <script src="<?php echo base_url();?>assets_bootstrap/js/bootstrap-modal.js"></script>
+    <script src="<?php echo base_url();?>assets_bootstrap/js/bootstrap-dropdown.js"></script>
+    <script src="<?php echo base_url();?>assets_bootstrap/js/bootstrap-scrollspy.js"></script>
+    <script src="<?php echo base_url();?>assets_bootstrap/js/bootstrap-tab.js"></script>
+    <script src="<?php echo base_url();?>assets_bootstrap/js/bootstrap-tooltip.js"></script>
+    <script src="<?php echo base_url();?>assets_bootstrap/js/bootstrap-popover.js"></script>
+    <script src="<?php echo base_url();?>assets_bootstrap/js/bootstrap-button.js"></script>
+    <script src="<?php echo base_url();?>assets_bootstrap/js/bootstrap-collapse.js"></script>
+    <script src="<?php echo base_url();?>assets_bootstrap/js/bootstrap-carousel.js"></script>
+    <script src="<?php echo base_url();?>assets_bootstrap/js/bootstrap-typeahead.js"></script>
+    <script src="<?php echo base_url();?>assets_bootstrap/js/bootstrap-affix.js"></script>
+
+    <script src="<?php echo base_url();?>assets_bootstrap/js/holder/holder.js"></script>
+    <script src="<?php echo base_url();?>assets_bootstrap/js/google-code-prettify/prettify.js"></script>
+
+    <script src="<?php echo base_url();?>assets_bootstrap/js/application.js"></script>
