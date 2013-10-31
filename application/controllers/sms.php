@@ -10,10 +10,10 @@ class SMS extends CI_Controller {
 			$number = $_GET['number'];	
 			
 			//if message = More, retain level and load more
-			if(strtoupper($message)=="M"){
+			if(strtoupper($sms)=="M"){
 				$level = $this->sms_functions->get_level($number);
-				$screen = $this->sms_functions->get_screen($screen);
-				$this->sms_functions->next_screen($number, $level, $screen);			
+				$screen = $this->sms_functions->get_screen($number);
+				$this->next_screen($number, $level, $screen);			
 			}else{
 				if(trim($sms)==""){
 					$this->load_counties($number, 1);	
@@ -32,18 +32,22 @@ class SMS extends CI_Controller {
 		public function load_counties($number, $newscreen){
 			$counties = $this->config->item('counties');
 			$c = '';
-			$i = 5 ;
+			$i = 1 ;
+			$skip = ($newscreen-1)*5;
+			$totalshown=0;
 			foreach($counties as $k=>$v){
-								
-				if($i<($newscreen*5)){					
-					$c .= $k.":".$v."\n";
+				
+					if(($i>$skip)&&($totalshown<6)){				
+						$c .= $k.":".$v."\n";
+					$totalshown++;
+					
 				} 
 				$i++;				
 			}
-			$this->send_response("Reply with a county number:\n".$c."\nM:More", $number);	
+			$this->send_response("Reply with a county number:\n".$c."\nM:More", $number, $newscreen);	
 		}
-		public function send_response($message, $number){
-			$this->sms_functions->dblog($message, $number);			
+		public function send_response($message, $number, $newscreen){
+			$this->sms_functions->dblog($message, $number, $newscreen);			
 			/*
 			$api_url = $this->config->item('api_url');
 			$api_key = $this->config->item('api_key');
