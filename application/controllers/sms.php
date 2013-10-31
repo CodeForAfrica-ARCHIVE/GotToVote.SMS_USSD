@@ -32,7 +32,7 @@ class SMS extends CI_Controller {
 					}elseif($level==3){
 						$this->load_wards($number, $screen, $sms);
 					}elseif($level==4){
-						//not last ward
+						//note last ward
 						$this->db->query("update sessions set sess_last_ward='$sms' where sess_number='$number'");
 						$this->load_centers($number, $screen, $sms);
 					}
@@ -89,7 +89,7 @@ class SMS extends CI_Controller {
 				if(($i>$skip)&&($totalshown<6)){
 					if(!in_array($r[7], $added)){
 						$added[] = $r[7];
-						$c .= $r[7].':'.$r[8]."\n";
+						$c .= $r[8]."\n";
 						$totalshown++;
 					}
 				}
@@ -104,7 +104,8 @@ class SMS extends CI_Controller {
 			if($level==1){
 				$this->load_counties($number, $newscreen);			
 			}elseif($level==4){
-				$this->load_centers($number, $newscreen);
+				$code = $this->sms_functions->last_ward($number);
+				$this->load_centers($number, $newscreen, $code);
 			}		
 		}
 		public function load_counties($number, $newscreen){

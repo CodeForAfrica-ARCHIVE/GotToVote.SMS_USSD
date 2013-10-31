@@ -49,6 +49,16 @@ class Sms_functions extends CI_Model {
 			$screen = $query['sess_current_screen'];
 			return $screen;	
 		}
+		public function last_ward($number){
+			$this->db->select("*");
+			$this->db->from("sessions");
+			$this->db->where("sess_number", $number);
+			$query = $this->db->get();
+			
+			$query = $query->result_array();
+			$query = $query[0];	
+			return $query['sess_last_ward'];
+		}
 	
 }
 ?>

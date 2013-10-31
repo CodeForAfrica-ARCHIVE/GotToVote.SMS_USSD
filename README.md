@@ -1,4 +1,4 @@
-Got To Vote SMS /USSD
-===========
+GotToVoteSMS_USSD
+=================
 
-
+GotToVote on SMS and USSD
