@@ -2,20 +2,7 @@
 
 class Sms_functions extends CI_Model {
 		
-		public function clean($sms){
-			$sms = $this->trim_spaces($sms);
-			$sms = $this->caps($sms);			
-			return $sms;
-		}
-		public function trim_spaces($sms){
-			$sms = trim($sms);
-			return $sms;			
-		}
-		public function caps($sms){
-			$sms = strtolower($sms);
-			$sms = ucfirst($sms);
-			return $sms;		
-		}
+		
 		public function dblog($message, $number, $newscreen){
 			//check if there is active session
 			$this->db->select("*");
@@ -47,6 +34,9 @@ class Sms_functions extends CI_Model {
 			$query = $query[0];	
 			$level = $query['sess_level'];
 			return $level;	
+		}
+		public function update_level($level, $number){
+			$this->db->query("update sessions set sess_level='$level' where sess_number='$number'");
 		}
 		public function get_screen($number){
 			$this->db->select("*");
