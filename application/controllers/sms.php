@@ -10,7 +10,12 @@ class SMS extends CI_Controller {
 			$number = $_GET['number'];
 			
 			if(trim($sms)==""){
-				$this->send_response("Please respond with the name of your county, district or ward", $number);			
+				$counties = $this->config->item('counties');
+				$c = '';
+				foreach($counties as $k=>$v){
+					$c .= $k.":".$v."\n"; 				
+				}
+				$this->send_response("Reply with a county number:\n".$c, $number);			
 			}else{	
 				$sms = $this->sms_functions->clean($sms);
 			}	
