@@ -45,12 +45,30 @@ class SMS extends CI_Controller {
 
 			$result = $result['rows'];
 			$added = array();
+			$c = '';
 			foreach($result as $r){
 				if(!in_array($r[3], $added)){
 					$added[] = $r[3];
-					print $r[3].':'.$r[4]."\n";
+					$c .= $r[3].':'.$r[4]."\n";
 				}
 			}
+			$this->send_response("Reply with a district number:\n".$c."\n", $number, $screen);
+		}
+		public function load_wards($number, $screen, $code){
+			$query = "SELECT%20*%20FROM%20".$this->config->item('gft_table')."%20WHERE%20Const_Code='".$code."'";
+			$request_url = $this->config->item('gft_url').$query."&key=".$this->config->item('gft_key');
+			$result = get_object_vars(json_decode(file_get_contents($request_url)));
+
+			$result = $result['rows'];
+			$added = array();
+			$c = '';
+			foreach($result as $r){
+				if(!in_array($r[5], $added)){
+					$added[] = $r[5];
+					$c .= $r[5].':'.$r[6]."\n";
+				}
+			}
+			$this->send_response("Reply with a ward number:\n".$c."\n", $number, $screen);
 		}
 		public function next_screen($number, $level, $screen){
 			$newscreen = $screen + 1;
