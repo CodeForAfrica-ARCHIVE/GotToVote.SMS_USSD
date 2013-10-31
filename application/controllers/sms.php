@@ -23,7 +23,9 @@ class SMS extends CI_Controller {
 					$level = $this->sms_functions->get_level($number);
 					$screen = $this->sms_functions->get_screen($number);
 					//first update level
-					$level = $level + 1;
+					if($level<4){
+						$level = $level + 1;
+					}
 					$this->sms_functions->update_level($level, $number);	
 					if($level==2){
 						$this->load_districts($number, $screen, $sms);					
@@ -70,10 +72,37 @@ class SMS extends CI_Controller {
 			}
 			$this->send_response("Reply with a ward number:\n".$c."\n", $number, $screen);
 		}
+		public function load_centers($number, $newscreen, $code){
+			$query = "SELECT%20*%20FROM%20".$this->config->item('gft_table')."%20WHERE%20C_Ward_Code='".$code."'";
+			$request_url = $this->config->item('gft_url').$query."&key=".$this->config->item('gft_key');
+			$result = get_object_vars(json_decode(file_get_contents($request_url)));
+
+			$result = $result['rows'];
+			$added = array();
+			$c = '';
+			$i = 1 ;
+			$skip = ($newscreen-1)*5;
+			$totalshown=1;
+			foreach($result as $r){
+				if(($i>$skip)&&($totalshown<6)){
+					if(!in_array($r[7], $added)){
+						$added[] = $r[7];
+						$c .= $r[7].':'.$r[8]."\n";
+						$totalshown++;
+					}
+				}
+			}
+			if($totalshown=='1'){
+				$c .= "(No more results to show!)\n";			
+			}
+			$this->send_response($c."\nM:More", $number, $newscreen);
+		}
 		public function next_screen($number, $level, $screen){
 			$newscreen = $screen + 1;
 			if($level==1){
 				$this->load_counties($number, $newscreen);			
+			}elseif($level==4){
+				$this->load_centers($number, $newscreen);
 			}		
 		}
 		public function load_counties($number, $newscreen){
