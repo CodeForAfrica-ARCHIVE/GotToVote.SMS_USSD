@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class SMS_functions extends CI_Model {
+class Sms_functions extends CI_Model {
 		
 		public function clean($sms){
 			$sms = $this->trim_spaces($sms);
@@ -12,7 +12,7 @@ class SMS_functions extends CI_Model {
 			return $sms;			
 		}
 		public function caps($sms){
-			$sms = strtolower($sms):
+			$sms = strtolower($sms);
 			$sms = ucfirst($sms);
 			return $sms;		
 		}	

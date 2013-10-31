@@ -80,7 +80,7 @@ $autoload['helper'] = array('url', 'form');
 |
 */
 
-$autoload['config'] = array('sms_api');
+$autoload['config'] = array('gft_sms_api');
 
 
 /*
