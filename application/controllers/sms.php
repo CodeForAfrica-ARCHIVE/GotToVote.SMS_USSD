@@ -32,6 +32,8 @@ class SMS extends CI_Controller {
 					}elseif($level==3){
 						$this->load_wards($number, $screen, $sms);
 					}elseif($level==4){
+						//not last ward
+						$this->db->query("update sessions set sess_last_ward='$sms' where sess_number='$number'");
 						$this->load_centers($number, $screen, $sms);
 					}
 				}else{
@@ -60,7 +62,7 @@ class SMS extends CI_Controller {
 			$query = "SELECT%20*%20FROM%20".$this->config->item('gft_table')."%20WHERE%20Const_Code='".$code."'";
 			$request_url = $this->config->item('gft_url').$query."&key=".$this->config->item('gft_key');
 			$result = get_object_vars(json_decode(file_get_contents($request_url)));
-
+			
 			$result = $result['rows'];
 			$added = array();
 			$c = '';
