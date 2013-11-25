@@ -44,11 +44,14 @@ class SMS extends CI_Controller {
 					}
 				}else{
 				print $sms;
-					$this->send_response("Request is not understood!\n0:Back", $number, $screen);
+					$this->send_response("Request is not understood!\n0:Back", $number, $screen, array());
 				}	
 			}
 		}
 		public function load_districts($number, $screen, $code){
+			//first get the actial code
+			$code = $this->get_option_id($number, $code);
+			//
 			$query = "SELECT%20*%20FROM%20".$this->config->item('gft_table')."%20WHERE%20County_Code='".$code."'";
 			$this->db->query("update sessions set sess_last_county='$code' where sess_number='$number'");
 			$request_url = $this->config->item('gft_url').$query."&key=".$this->config->item('gft_key');
@@ -57,15 +60,22 @@ class SMS extends CI_Controller {
 			$result = $result['rows'];
 			$added = array();
 			$c = '';
+			$optionids = array();
+			$totalshown = 1;
 			foreach($result as $r){
 				if(!in_array($r[3], $added)){
 					$added[] = $r[3];
-					$c .= $r[3].':'.$r[4]."\n";
+					$c .= $totalshown.':'.$r[4]."\n";
+					$totalshown++;
+					$optionids[] = $r[3];
 				}
 			}
-			$this->send_response("Reply with a district number:\n".$c."0:Back", $number, $screen);
+			$this->send_response("Reply with a district number:\n".$c."0:Back", $number, $screen, $optionids);
 		}
 		public function load_wards($number, $screen, $code){
+			//first get the actial code
+			$code = $this->get_option_id($number, $code);
+			//
 			$query = "SELECT%20*%20FROM%20".$this->config->item('gft_table')."%20WHERE%20Const_Code='".$code."'";
 			$this->db->query("update sessions set sess_last_const='$code' where sess_number='$number'");
 			$request_url = $this->config->item('gft_url').$query."&key=".$this->config->item('gft_key');
@@ -74,15 +84,22 @@ class SMS extends CI_Controller {
 			$result = $result['rows'];
 			$added = array();
 			$c = '';
+			$optionids = array();
+			$totalshown = 1;
 			foreach($result as $r){
 				if(!in_array($r[5], $added)){
 					$added[] = $r[5];
-					$c .= $r[5].':'.$r[6]."\n";
+					$c .= $totalshown.':'.$r[6]."\n";
+					$totalshown++;
+					$optionids[] = $r[5];
 				}
 			}
-			$this->send_response("Reply with a ward number:\n".$c."0:Back", $number, $screen);
+			$this->send_response("Reply with a ward number:\n".$c."0:Back", $number, $screen, $optionids);
 		}
 		public function load_centers($number, $newscreen, $code){
+			//first get the actial code
+			$code = $this->get_option_id($number, $code);
+			//
 			$query = "SELECT%20*%20FROM%20".$this->config->item('gft_table')."%20WHERE%20C_Ward_Code='".$code."'";
 			$request_url = $this->config->item('gft_url').$query."&key=".$this->config->item('gft_key');
 			$result = get_object_vars(json_decode(file_get_contents($request_url)));
@@ -93,19 +110,21 @@ class SMS extends CI_Controller {
 			$i = 1 ;
 			$skip = ($newscreen-1)*5;
 			$totalshown=1;
+			$optionids = array();
 			foreach($result as $r){
 				if(($i>$skip)&&($totalshown<6)){
 					if(!in_array($r[7], $added)){
 						$added[] = $r[7];
 						$c .= $r[8]."\n";
-						$totalshown++;
+						$optionids[] = $r[7];
+						//$totalshown++;
 					}
 				}
 			}
 			if($totalshown=='1'){
 				$c .= "(No more results to show!)\n";			
 			}
-			$this->send_response($c."0:Back\n00:More", $number, $newscreen);
+			$this->send_response($c."0:Back\n00:More", $number, $newscreen, $optionids);
 		}
 		public function next_screen($number, $level, $screen){
 			$newscreen = $screen + 1;
@@ -137,21 +156,33 @@ class SMS extends CI_Controller {
 			$i = 1 ;
 			$skip = ($newscreen-1)*5;
 			$totalshown=1;
+			$optionids = array();
 			foreach($counties as $k=>$v){
-				
-				if(($i>$skip)&&($totalshown<6)){				
-					$c .= $k.":".$v."\n";
+				if(($i>$skip)&&($totalshown<6)){
+					$optionids[]=$k;	
+								
+					$c .= $totalshown.":".$v."\n";
 					$totalshown++;
 				} 
 				$i++;				
 			}
+			
+			
+				
 			if($totalshown=='1'){
-				$c .= "(No more results to show!)\n";			
-			}
-			$this->send_response("Reply with a county number:\n".$c."\n00:More", $number, $newscreen);	
+					$c .= "(No more results to show!)\n";			
+				}
+				$this->send_response("Reply with a county number:\n".$c."\n00:More", $number, $newscreen, $optionids);	
+			
 		}
-		public function send_response($message, $number, $newscreen){
-			$this->sms_functions->dblog($message, $number, $newscreen);			
+		
+		public function get_option_id($number, $code){
+			return $this->sms_functions->get_id($number, $code);
+		}
+		public function send_response($message, $number, $newscreen, $optionids){
+			$this->sms_functions->dblog($message, $number, $newscreen);		
+			
+			$this->sms_functions->set_option_ids($number, $optionids);	
 			/*
 			$api_url = $this->config->item('api_url');
 			$api_key = $this->config->item('api_key');
@@ -159,7 +190,6 @@ class SMS extends CI_Controller {
 			redirect($request_url);
 			*/
 			//For testing purposes
-			
 			print $message;
 		}			
 	}

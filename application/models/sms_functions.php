@@ -82,6 +82,19 @@ class Sms_functions extends CI_Model {
 			$query = $query[0];	
 			return $query['sess_last_const'];
 		}
+		public function get_id($number, $code){
+			$this->db->select("*");
+			$this->db->from("sessions");
+			$this->db->where("sess_number", $number);
+			$query = $this->db->get();
+			
+			$query = $query->result_array();
+			$query = $query[0];	
+			$result = $query['sess_option_ids'];
+			$code = $code-1;
+			$result = explode(",", $result);
+			return $result[$code];
+		}
 		public function last_county($number){
 			$this->db->select("*");
 			$this->db->from("sessions");
@@ -91,6 +104,26 @@ class Sms_functions extends CI_Model {
 			$query = $query->result_array();
 			$query = $query[0];	
 			return $query['sess_last_county'];
+		}
+		public function get_sess_id($number){
+			$this->db->select("*");
+			$this->db->from("sessions");
+			$this->db->where("sess_number", $number);
+			$query = $this->db->get();
+			
+			$query = $query->result_array();
+			$query = $query[0];	
+			return $query['sess_id'];
+		}
+		public function set_option_ids($number, $option_ids){
+			$options = implode(",", $option_ids);
+			
+			$id = $this->get_sess_id($number);
+			
+			$query = "update sessions set sess_option_ids='$options' where sess_id='$id'";
+								
+			$this->db->query($query);
+		
 		}
 }
 ?>
