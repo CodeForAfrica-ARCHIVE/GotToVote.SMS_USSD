@@ -35,6 +35,19 @@ class Sms_functions extends CI_Model {
 			$level = $query['sess_level'];
 			return $level;	
 		}
+		public function lower_level($number){
+			$this->db->query("update sessions set sess_level=sess_level-1 where sess_number='$number'");
+			
+			$this->db->select("*");
+			$this->db->from("sessions");
+			$this->db->where("sess_number", $number);
+			$query = $this->db->get();
+			
+			$query = $query->result_array();
+			$query = $query[0];	
+			$level = $query['sess_level'];
+			return $level;	
+		}
 		public function update_level($level, $number){
 			$this->db->query("update sessions set sess_level='$level' where sess_number='$number'");
 		}
@@ -59,6 +72,25 @@ class Sms_functions extends CI_Model {
 			$query = $query[0];	
 			return $query['sess_last_ward'];
 		}
-	
+		public function last_const($number){
+			$this->db->select("*");
+			$this->db->from("sessions");
+			$this->db->where("sess_number", $number);
+			$query = $this->db->get();
+			
+			$query = $query->result_array();
+			$query = $query[0];	
+			return $query['sess_last_const'];
+		}
+		public function last_county($number){
+			$this->db->select("*");
+			$this->db->from("sessions");
+			$this->db->where("sess_number", $number);
+			$query = $this->db->get();
+			
+			$query = $query->result_array();
+			$query = $query[0];	
+			return $query['sess_last_county'];
+		}
 }
 ?>
