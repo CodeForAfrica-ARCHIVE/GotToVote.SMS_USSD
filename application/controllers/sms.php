@@ -11,7 +11,7 @@ class SMS extends CI_Controller {
 			$sms = trim($sms);
 			//if message = More, retain level and load more
 			
-			if(strtoupper($sms)=="M"){
+			if(strtoupper($sms)=="00"){
 				$level = $this->sms_functions->get_level($number);
 				$screen = $this->sms_functions->get_screen($number);
 				$this->next_screen($number, $level, $screen);		
@@ -105,7 +105,7 @@ class SMS extends CI_Controller {
 			if($totalshown=='1'){
 				$c .= "(No more results to show!)\n";			
 			}
-			$this->send_response($c."0:Back\nM:More", $number, $newscreen);
+			$this->send_response($c."0:Back\n00:More", $number, $newscreen);
 		}
 		public function next_screen($number, $level, $screen){
 			$newscreen = $screen + 1;
@@ -148,7 +148,7 @@ class SMS extends CI_Controller {
 			if($totalshown=='1'){
 				$c .= "(No more results to show!)\n";			
 			}
-			$this->send_response("Reply with a county number:\n".$c."\nM:More", $number, $newscreen);	
+			$this->send_response("Reply with a county number:\n".$c."\n00:More", $number, $newscreen);	
 		}
 		public function send_response($message, $number, $newscreen){
 			$this->sms_functions->dblog($message, $number, $newscreen);			
@@ -159,6 +159,7 @@ class SMS extends CI_Controller {
 			redirect($request_url);
 			*/
 			//For testing purposes
+			
 			print $message;
 		}			
 	}
