@@ -30,8 +30,11 @@ CREATE TABLE `sessions` (
   `sess_last_seen` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `sess_started` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   `sess_last_ward` int(11) DEFAULT NULL,
+  `sess_last_county` int(11) DEFAULT NULL,
+  `sess_last_const` int(11) DEFAULT NULL,
+  `sess_option_ids` text,
   PRIMARY KEY (`sess_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -40,6 +43,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
+INSERT INTO `sessions` VALUES (16,'1234589',2,1,'2013-11-25 18:06:31','2013-11-25 18:06:08',NULL,9,NULL,'');
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-10-31 21:36:50
+-- Dump completed on 2013-11-27 16:13:36
